@@ -3,8 +3,12 @@ import pymongo
 
 class Database:
     uri = "mongodb://127.0.0.1:27017"
-    client = pymongo.MongoClient(uri)
-    DATABASE = client['fullstack']
+    DATABASE=None
+
+    @staticmethod
+    def initialize():
+        client = pymongo.MongoClient(Database.uri)
+        Database.DATABASE = client['fullstack']
 
     @staticmethod
     def insert(collection, post):
